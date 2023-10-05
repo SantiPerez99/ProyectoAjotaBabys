@@ -1,0 +1,48 @@
+/* Estilo para la tabla */
+.mi-tabla {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid #dddddd;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilo para las filas pares */
+  .mi-tabla tr:nth-child(even) {
+    background-color: #c07070;
+  }
+  
+  /* Estilo para las filas impares */
+  .mi-tabla tr:nth-child(odd) {
+    background-color: #323232;
+  }
+  
+  /* Estilo para las celdas */
+  .mi-tabla td, .mi-tabla th {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #c35353;
+    padding: 8px;
+    text-align: left;
+    transition: background-color 0.3s, transform 0.2s;
+
+  }
+  /* Resaltar al pasar el mouse */
+  .mi-tabla tr:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
+  }
+  
+  /* Estilo para las celdas de encabezado */
+  .mi-tabla th {
+    background-color: #656565;
+    color: white;
+    padding: 12px 8px;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
