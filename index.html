@@ -21,47 +21,51 @@
 </head>
 <body>
     <h1 class="text-center">Ajota Baby's</h1>
-    <h2>Bienvenido al carrito de compras</h2>
+    <h2 class="text-center">Bienvenido al carrito de compras</h2>
 
-    <div class="container m-3">
+    <div class="container">
       <div class="row" id="card-container">
           <!-- Las tarjetas se agregarán aquí dinámicamente -->
       </div>
-  </div>
-
-    <div class="container m-3 row">
-        <div class="container m-1 col">
-          <form id="formularioAgregar">
-            <select id="productos" class="form-control"></select>
-            <button type="submit" id="agregar" class="btn btn-primary">Agregar</button>
-          </form>
-        </div>
-        <div class="container m-1">
-          <table class="mi-tabla">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Precio Unitario</th>
-                        <th>Cantidad</th>
-                        <th>Subtotal</th>
-                    </tr>
-                </thead>
-                <tbody id="items">
-                </tbody>
-                <tfoot class="thead-dark">
-                    <tr>
-                        <th>Total: </th>
-                        <th></th>
-                        <th></th>
-                        <th id="total"></th>
-                    </tr>
-                </tfoot>
-          </table>
-        </div>
-        <div class="container m-1">
-            <button id="vaciar" class="btn btn-primary">
-                Vaciar
-            </button>
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <div class="container m-3 row " >
+            <div class="container m-1 col">
+              <form id="formularioAgregar">
+                <select id="productos" class="form-control"></select>
+                <button type="submit" id="agregar" class="btn btn-primary">Agregar</button>
+              </form>
+            </div>
+            <div class="container m-1">
+              <table class="mi-tabla">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Precio Unitario</th>
+                            <th>Cantidad</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody id="items">
+                    </tbody>
+                    <tfoot class="thead-dark">
+                        <tr>
+                            <th>Total: </th>
+                            <th></th>
+                            <th></th>
+                            <th id="total"></th>
+                        </tr>
+                    </tfoot>
+              </table>
+            </div>
+            <div class="container m-1">
+                <button id="vaciar" class="btn btn-outline-danger">
+                    Vaciar
+                </button>
+                <button id="confirmar" class="btn btn-outline-success">
+                    confirmar
+                </button>
+            </div>
         </div>
     </div>
     <script src="./item.js"></script>
@@ -69,7 +73,6 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     
     <script src="./producto.js"></script>
-    <script src="./carrito.js"></script>
-    
+    <script src="./carrito.js"></script>  
 </body>
 </html>

@@ -3,17 +3,19 @@ let carrito = [];
 
 ///Descomentar para ejecutar esto una vez y que se cargue al localStorage los productos
 
-productos.push(new producto('Remera Brooklyn',1898,'varon',2))
-productos.push(new producto('Buzo Litoral', 3393, 'unisex',1))
-productos.push(new producto('Campera Hoshi', 3098, 'unisex',2))
-productos.push(new producto('Set Isaura', 4290, 'nena',2))
-productos.push(new producto('Pantalon Hoshi', 2243, 'unisex',2))
-productos.push(new producto('body Foderato', 1954, 'varon',2))
-productos.push(new producto('body Zaira', 2128, 'nena',2))
-productos.push(new producto('Set smooth', 3226,'unisex',2)) 
-productos.push(new producto('Remera Daysi', 1898,'nena',2)) 
+productos.push(new producto(10, 'Remera Brooklyn', 1898, 'varon', 2));
+productos.push(new producto(8, 'Buzo Litoral', 3393, 'unisex', 1));
+productos.push(new producto(7, 'Campera Hoshi', 3098, 'unisex', 2));
+productos.push(new producto(1, 'Set Isaura', 4290, 'nena', 2));
+productos.push(new producto(5, 'Pantalon Hoshi', 4000, 'unisex', 2));
+productos.push(new producto(11, 'Pantalon Oli', 4000, 'unisex', 2));
+productos.push(new producto(6, 'body Foderato', 3500, 'varon', 2));
+productos.push(new producto(3, 'body Zaira', 3500, 'nena', 2));
+productos.push(new producto(2, 'Set Isi', 3226, 'unisex', 2));
+productos.push(new producto(9, 'Remera Daysi', 1898, 'nena', 2));
+productos.push(new producto(4, 'Set Smooth', 1898, 'unisex', 2));
 
-localStorage.setItem('productos', JSON.stringify(productos));
+productos = JSON.parse(localStorage.getItem('productos')) || [];
 
 
 ///obtengo los elementos necesarios del DOM
@@ -24,8 +26,6 @@ const btnAgregar = document.querySelector('#agregar');
 ////traer los productos del localStorage
 function traerItemsStorage() {
     productos = JSON.parse(localStorage.getItem('productos')) || [];
-    //carrito = JSON.parse(localStorage.getItem('productos')) || [];
-
 }
 
 
@@ -75,68 +75,63 @@ formularioAgregar.addEventListener('submit', (e) => {
     const bodyTabla = document.getElementById('items');
     const total = document.querySelector('#total');
     bodyTabla.innerHTML = ''; // Limpiar contenido previo de la tabla
-  
+
     let totalCarrito = 0; // Inicializar el total del carrito
-  
+
     carrito.forEach((item, index) => {
-      const { producto: { nombre, precio }, cantidad } = item;
-  
-      // Crear una fila para el elemento del carrito
-      const fila = document.createElement('tr');
-      fila.className = 'text-white';
-  
-      // Columna para el nombre
-      const columnaNombre = document.createElement('td');
-      columnaNombre.textContent = nombre || '';
-      fila.appendChild(columnaNombre);
-  
-      // Columna para el precio unitario
-      const columnaPrecio = document.createElement('td');
-      columnaPrecio.textContent = `$${precio || ''}`;
-      fila.appendChild(columnaPrecio);
-  
-      // Columna para la cantidad
-      const columnaCantidad = document.createElement('td');
-      columnaCantidad.textContent = cantidad || '';
-      fila.appendChild(columnaCantidad);
-  
-      // Columna para el subtotal
-      const columnaSubtotal = document.createElement('td');
-      const subtotal = cantidad * precio || 0;
-      columnaSubtotal.textContent = subtotal;
-      fila.appendChild(columnaSubtotal);
-  
-      // Columna con el botón de eliminar
-      const columnaEliminar = document.createElement('td');
-      const botonEliminar = document.createElement('button');
-      botonEliminar.textContent = 'X';
-      botonEliminar.className = 'btn btn-secondary btn-sm';
-  
-      // Agregar un evento de clic al botón para eliminar el elemento
-      botonEliminar.addEventListener('click', () => {
-        eliminarDelCarrito(index);
-      });
-  
-      columnaEliminar.appendChild(botonEliminar);
-      fila.appendChild(columnaEliminar);
-  
-      bodyTabla.appendChild(fila);
-  
-      // Sumar al total del carrito
-      totalCarrito += subtotal;
+        const { producto: { nombre, precio }, cantidad } = item;
+
+        // Crear una fila para el elemento del carrito
+        const fila = document.createElement('tr');
+        fila.className = 'text-white';
+
+        // Columna para el nombre
+        const columnaNombre = document.createElement('td');
+        columnaNombre.textContent = nombre || '';
+        fila.appendChild(columnaNombre);
+
+        // Columna para el precio unitario
+        const columnaPrecio = document.createElement('td');
+        columnaPrecio.textContent = `$${precio || ''}`;
+        fila.appendChild(columnaPrecio);
+
+        // Columna para la cantidad
+        const columnaCantidad = document.createElement('td');
+        columnaCantidad.textContent = cantidad || '';
+        fila.appendChild(columnaCantidad);
+
+        // Columna para el subtotal
+        const columnaSubtotal = document.createElement('td');
+        const subtotal = cantidad * precio || 0;
+        columnaSubtotal.textContent = `$${subtotal.toFixed(2)}`;
+        fila.appendChild(columnaSubtotal);
+
+        // Columna con el botón de eliminar
+        const columnaEliminar = document.createElement('td');
+        const botonEliminar = document.createElement('button');
+        botonEliminar.textContent = 'X';
+        botonEliminar.className = 'btn btn-secondary btn-sm';
+
+        // Agregar un evento de clic al botón para eliminar el elemento
+        botonEliminar.addEventListener('click', () => {
+            eliminarDelCarrito(index);
+        });
+
+        columnaEliminar.appendChild(botonEliminar);
+        fila.appendChild(columnaEliminar);
+
+        bodyTabla.appendChild(fila);
+
+        // Sumar al total del carrito
+        totalCarrito += subtotal;
     });
-    total.textContent = totalCarrito;
-    function eliminarDelCarrito(index) {
-        carrito.splice(index, 1); // Eliminar el elemento del carrito
-        localStorage.setItem('productos', JSON.stringify(productos)); // Actualizar el localStorage
-        dibujarTabla(); // Volver a dibujar la tabla para reflejar los cambios
-      }
+    total.textContent = `$${totalCarrito.toFixed(2)}`;
     
-    // Establecer el nuevo contenido de tabla en lugar de reemplazarlo
-    bodyTabla.innerHTML = tablaHTML;
-  
-    // Calcular el total
-    total.textContent = carrito.reduce((acc, item) => acc + item.producto.precio * item.cantidad, 0);
+  }
+  function eliminarDelCarrito(index) {
+    carrito.splice(index, 1); // Eliminar el elemento del carrito
+    localStorage.setItem('productos', JSON.stringify(productos)); // Actualizar el localStorage
+    dibujarTabla(); // Volver a dibujar la tabla para reflejar los cambios
   }
 
   // Agregar un evento de clic al botón "Vaciar"
@@ -158,13 +153,13 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
             id: 2, 
-            name: "Set Smooth",
+            name: "Set Isi",
             age: 2,
             img: "./assets/img/set-smooth.jpg"
         },
         {
             id: 3, 
-            name: "Set Smooth",
+            name: "Zaira",
             age: 2,
             img: "./assets/img/body-federato-zaira.jpg"
         },
@@ -173,6 +168,48 @@ document.addEventListener('DOMContentLoaded', function() {
             name: "Set Smooth",
             age: 2,
             img: "./assets/img/body-douglas.jpg"
+        },
+        {
+          id: 5, 
+          name: "Pantalon Oshi",
+          age: 2,
+          img: "./assets/img/pantalon-hoshi-multi.jpg"
+        },
+        {
+          id: 6, 
+          name: "body Foderato",
+          age: 2,
+          img: "./assets/img/body-federato-zaira.jpg"
+        },
+        {
+          id: 7, 
+          name: "Campera Oshi",
+          age: 2,
+          img: "./assets/img/campera-hoshi.jpg"
+        },
+        {
+          id: 8, 
+          name: "Buzo Litoral",
+          age: 2,
+          img: "./assets/img/buzo-litoral.jpg"
+        },
+        {
+          id: 9, 
+          name: "Remera daysi",
+          age: 2,
+          img: "./assets/img/remera-daysi.jpg"
+        },
+        {
+          id: 10, 
+          name: "Remera Broklyn",
+          age: 2,
+          img: "./assets/img/remera-brooklyn-daysi.jpg"
+        },
+        {
+          id: 11, 
+          name: "Pantalon Oli",
+          age: 2,
+          img: "./assets/img/pantalon-oli.jpg"
         }
         
     ];
@@ -182,19 +219,45 @@ document.addEventListener('DOMContentLoaded', function() {
     // Agrega tarjetas dinámicamente
     cards.forEach((card) => {
         const cardElement = document.createElement("div");
-        cardElement.classList.add("col-lg-3", "col-md-6", "d-inline-block",); 
+        cardElement.classList.add("col-lg-3", "col-md-6", "d-inline-block", "card"); 
         cardElement.innerHTML = `
             <div class="card">
                 <img src="${card.img}" class="card-img-top" alt="${card.name}">
                 <div class="card-body">
                     <h5 class="card-title text-center">${card.name}</h5>
                     <p class="card-text">Descripción de la tarjeta.</p>
+                    <button class="btn btn-outline-info" data-product-id="${card.id}">Agregar al carrito</button>
                 </div>
             </div>
         `;
         cardContainer.appendChild(cardElement);
     });
+    const botonesAgregarAlCarrito = cardContainer.querySelectorAll(".btn.btn-outline-info");
+
+  botonesAgregarAlCarrito.forEach((boton) => {
+    boton.addEventListener("click", (event) => {
+        const productId = parseInt(event.target.getAttribute("data-product-id"), 10);
+        const producto = productos.find((p) => p.id === productId);
+
+        if (producto) {
+            
+            const itemEnCarrito = carrito.find((item) => item.producto.id === productId);
+
+            if (itemEnCarrito) {
+                itemEnCarrito.cantidad++;
+            } else {
+                const item = new Item(producto, 1);
+                carrito.push(item);
+            }
+
+            // Guarda el carrito en el localStorage y actualiza la tabla
+            localStorage.setItem('productos', JSON.stringify(productos));
+            dibujarTabla();
+        }
+    });
+  });
 });
+
 
 
 
