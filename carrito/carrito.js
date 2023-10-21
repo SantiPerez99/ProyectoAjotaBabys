@@ -143,120 +143,140 @@ btnVaciar.addEventListener('click', () => {
   dibujarTabla();
 });
 
+
 document.addEventListener('DOMContentLoaded', function() {
-    const cards = [
-        {
-          id: 1,
-          name: "Set Isaura",
-          age: 2,
-          img: "./assets/img/set-isaura.jpg"
-        },
-        {
-            id: 2, 
-            name: "Set Isi",
-            age: 2,
-            img: "./assets/img/set-smooth.jpg"
-        },
-        {
-            id: 3, 
-            name: "Zaira",
-            age: 2,
-            img: "./assets/img/body-federato-zaira.jpg"
-        },
-        {
-            id: 4, 
-            name: "Set Smooth",
-            age: 2,
-            img: "./assets/img/body-douglas.jpg"
-        },
-        {
-          id: 5, 
-          name: "Pantalon Oshi",
-          age: 2,
-          img: "./assets/img/pantalon-hoshi-multi.jpg"
-        },
-        {
-          id: 6, 
-          name: "body Foderato",
-          age: 2,
-          img: "./assets/img/body-federato-zaira.jpg"
-        },
-        {
-          id: 7, 
-          name: "Campera Oshi",
-          age: 2,
-          img: "./assets/img/campera-hoshi.jpg"
-        },
-        {
-          id: 8, 
-          name: "Buzo Litoral",
-          age: 2,
-          img: "./assets/img/buzo-litoral.jpg"
-        },
-        {
-          id: 9, 
-          name: "Remera daysi",
-          age: 2,
-          img: "./assets/img/remera-daysi.jpg"
-        },
-        {
-          id: 10, 
-          name: "Remera Broklyn",
-          age: 2,
-          img: "./assets/img/remera-brooklyn-daysi.jpg"
-        },
-        {
-          id: 11, 
-          name: "Pantalon Oli",
-          age: 2,
-          img: "./assets/img/pantalon-oli.jpg"
-        }
-        
-    ];
+  const cards = [{
+    id: 1,
+    name: "Set Isaura",
+    age: 2,
+    img: "./assets/img/set-isaura.jpg"
+  },
+  {
+      id: 2, 
+      name: "Set Isi",
+      age: 2,
+      img: "./assets/img/set-smooth.jpg"
+  },
+  {
+      id: 3, 
+      name: "Zaira",
+      age: 2,
+      img: "./assets/img/body-federato-zaira.jpg"
+  },
+  {
+      id: 4, 
+      name: "Set Smooth",
+      age: 2,
+      img: "./assets/img/body-douglas.jpg"
+  },
+  {
+    id: 5, 
+    name: "Pantalon Oshi",
+    age: 2,
+    img: "./assets/img/pantalon-hoshi-multi.jpg"
+  },
+  {
+    id: 6, 
+    name: "body Foderato",
+    age: 2,
+    img: "./assets/img/body-federato-zaira.jpg"
+  },
+  {
+    id: 7, 
+    name: "Campera Oshi",
+    age: 2,
+    img: "./assets/img/campera-hoshi.jpg"
+  },
+  {
+    id: 8, 
+    name: "Buzo Litoral",
+    age: 2,
+    img: "./assets/img/buzo-litoral.jpg"
+  },
+  {
+    id: 9, 
+    name: "Remera daysi",
+    age: 2,
+    img: "./assets/img/remera-daysi.jpg"
+  },
+  {
+    id: 10, 
+    name: "Remera Broklyn",
+    age: 2,
+    img: "./assets/img/remera-brooklyn-daysi.jpg"
+  },
+  {
+    id: 11, 
+    name: "Pantalon Oli",
+    age: 2,
+    img: "./assets/img/pantalon-oli.jpg"
+  }
+  ];
+  const cardContainer1 = document.getElementById("card-container-1");
+  const cardContainer2 = document.getElementById("card-container-2");
+  const cardContainer3 = document.getElementById("card-container-3");
+  // Separa las tarjetas en tres segmentos
+  const segment1Cards = cards.slice(0, 4); // Ejemplo: primeras 4 tarjetas
+  const segment2Cards = cards.slice(4, 8); // Ejemplo: siguientes 4 tarjetas
+  const segment3Cards = cards.slice(8);   // Ejemplo: las últimas 3 tarjetas
 
-    const cardContainer = document.getElementById("card-container");
+  // Agrega tarjetas al primer segmento
+  segment1Cards.forEach((card) => {
+      const cardElement = crearCardElement(card);
+      cardContainer1.appendChild(cardElement);
+  });
 
-    // Agrega tarjetas dinámicamente
-    cards.forEach((card) => {
-        const cardElement = document.createElement("div");
-        cardElement.classList.add("col-lg-3", "col-md-6", "d-inline-block", "card"); 
-        cardElement.innerHTML = `
-            <div class="card">
-                <img src="${card.img}" class="card-img-top" alt="${card.name}">
-                <div class="card-body">
-                    <h5 class="card-title text-center">${card.name}</h5>
-                    <p class="card-text">Descripción de la tarjeta.</p>
-                    <button class="btn btn-outline-info" data-product-id="${card.id}">Agregar al carrito</button>
-                </div>
-            </div>
-        `;
-        cardContainer.appendChild(cardElement);
-    });
-    const botonesAgregarAlCarrito = cardContainer.querySelectorAll(".btn.btn-outline-info");
+  // Agrega tarjetas al segundo segmento
+  segment2Cards.forEach((card) => {
+      const cardElement = crearCardElement(card);
+      cardContainer2.appendChild(cardElement);
+  });
 
-  botonesAgregarAlCarrito.forEach((boton) => {
-    boton.addEventListener("click", (event) => {
-        const productId = parseInt(event.target.getAttribute("data-product-id"), 10);
-        const producto = productos.find((p) => p.id === productId);
+  // Agrega tarjetas al tercer segmento
+  segment3Cards.forEach((card) => {
+      const cardElement = crearCardElement(card);
+      cardContainer3.appendChild(cardElement);
+  });
+  const botonesAgregarAlCarrito = document.querySelectorAll(".btn.btn-outline-info");
 
-        if (producto) {
-            
-            const itemEnCarrito = carrito.find((item) => item.producto.id === productId);
+botonesAgregarAlCarrito.forEach((boton) => {
+  boton.addEventListener("click", (event) => {
+    const productId = parseInt(event.target.getAttribute("data-product-id"), 10);
+    const producto = productos.find((p) => p.id === productId);
 
-            if (itemEnCarrito) {
-                itemEnCarrito.cantidad++;
-            } else {
-                const item = new Item(producto, 1);
-                carrito.push(item);
-            }
+    if (producto) {
+      const itemEnCarrito = carrito.find((item) => item.producto.id === productId);
 
-            // Guarda el carrito en el localStorage y actualiza la tabla
-            localStorage.setItem('productos', JSON.stringify(productos));
-            dibujarTabla();
-        }
-    });
+      if (itemEnCarrito) {
+        itemEnCarrito.cantidad++;
+      } else {
+        const item = new Item(producto, 1);
+        carrito.push(item);
+      }
+
+      // Guarda el carrito en el localStorage y actualiza la tabla
+      localStorage.setItem('productos', JSON.stringify(productos));
+      dibujarTabla();
+    }
   });
 });
+});
+
+function crearCardElement(card) {
+  const cardElement = document.createElement("div");
+  cardElement.classList.add("col-lg-3", "col-md-6", "d-inline-block", "card");
+  cardElement.innerHTML = `
+      <div class="card">
+          <img src="${card.img}" class="card-img-top" alt="${card.name}">
+          <div class="card-body">
+              <h5 class="card-title text-center">${card.name}</h5>
+              <p class="card-text">Descripción de la tarjeta.</p>
+              <button class="btn btn-outline-info" data-product-id="${card.id}">Agregar al carrito</button>
+          </div>
+      </div>
+  `;
+  return cardElement;
+}
 
 
 

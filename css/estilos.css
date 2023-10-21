@@ -49,3 +49,52 @@
   margin-top: 10px;
   
 }  
+body {
+  background-image: url('../assets/img/fondo\ 1.jpg');
+  background-size: cover; /* Escala la imagen para cubrir todo el fondo */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+}
+/* Estilos para la barra de navegación */
+.navegacion {
+  color: #fa7373; /* Texto blanco */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sutil sombra */
+}
+/* Estilos para los enlaces en el menú de navegación */
+.navegacion a {
+  text-decoration: none; /* Elimina el subrayado de los enlaces */
+  color: #000000; /* Color del texto de los enlaces */
+  font-size: 30px; /* Tamaño de fuente */
+}
+.navegacion li{
+  list-style-type: none;
+}
+
+/* Estilos para el fondo en hover */
+.navegacion li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /*background-color: #f0a1f7; /* Color de fondo en hover */
+  z-index: -1; /* Coloca el fondo detrás del contenido */
+  opacity: 0; /* Hace que el fondo sea transparente inicialmente */
+  transition: opacity 0.3s ease; /* Agrega una transición suave para la opacidad */
+  
+}
+
+/* Cambia la opacidad del fondo en hover */
+.navegacion li:hover::before {
+  opacity: 1; /* Hace que el fondo sea completamente visible en hover */
+}
+
+/* Estilos para los enlaces en hover */
+.navegacion li:hover a {
+  text-decoration: none; /* Elimina el subrayado de los enlaces en hover */
+  color: #fff; /* Cambia el color del texto para que sea legible en el nuevo fondo */
+}
