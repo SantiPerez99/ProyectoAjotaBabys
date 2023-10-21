@@ -16,29 +16,37 @@
         crossorigin="anonymous"></script>
      <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.16/dist/sweetalert2.min.css" rel="stylesheet">
      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-     <title>Carrito de compras Ajota Babys</title>
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,600&family=Courgette&family=Delicious+Handrawn&family=EB+Garamond:wght@400;500&family=Montserrat:ital,wght@0,400;1,200&family=Vollkorn+SC:wght@600&display=swap" rel="stylesheet">
+    <title>Carrito de compras Ajota Babys</title>
     
 </head>
-<body>
-    <h1 class="text-center">Ajota Baby's</h1>
+<body class="body">
+    <h1 class="titulo-ajota text-center">AJOTA BABY'S</h1>
     <div class="container">
-        <h1>Bienvenido al carrito de compras</h1>
+        <h1 class="titulo-carrito text-center">Bienvenido al carrito de compras</h1>
         <ul class="navegacion">
-            <li><a href="#card-container-1">Bebes</a></li>
-            <li><a href="#card-container-2">Niños</a></li>
-            <li><a href="#card-container-3">Niñas</a></li>
+            <li><a class="titulo-navegador" href="#card-container-1">Bebes</a></li>
+            <li><a class="titulo-navegador" href="#card-container-2">Niños</a></li>
+            <li><a class="titulo-navegador" href="#card-container-3">Niñas</a></li>
+            <li id="carrito-icon">
+                <div id="contador-carrito" class="contador-carrito">0</div>
+                <a href="#total"><i class="fas fa-shopping-cart"></i></a>
+            </li>
         </ul>
     </div>
     <div class="container">
-        <h3>Bebes</h3>
+        <h3 class="Titulos-secciones text-center">Bebes</h3>
         <div class="row" id="card-container-1">
             <!-- Tarjetas del Segmento 1 se agregarán aquí dinámicamente -->
         </div>
-        <h3>Niños</h3>
+        <h3 class="Titulos-secciones text-center">Niños</h3>
         <div class="row" id="card-container-2">
             <!-- Tarjetas del Segmento 2 se agregarán aquí dinámicamente -->
         </div>
-        <h3>Niñas</h3>
+        <h3 class="Titulos-secciones text-center">Niñas</h3>
         <div class="row" id="card-container-3">
             <!-- Tarjetas del Segmento 3 se agregarán aquí dinámicamente -->
         </div>

@@ -3,17 +3,17 @@ let carrito = [];
 
 ///Descomentar para ejecutar esto una vez y que se cargue al localStorage los productos
 
-productos.push(new producto(10, 'Remera Brooklyn', 1898, 'varon', 2));
+productos.push(new producto(10, 'Remera Brooklyn', 1898, 'varon', 1));
 productos.push(new producto(8, 'Buzo Litoral', 3393, 'unisex', 1));
-productos.push(new producto(7, 'Campera Hoshi', 3098, 'unisex', 2));
-productos.push(new producto(1, 'Set Isaura', 4290, 'nena', 2));
-productos.push(new producto(5, 'Pantalon Hoshi', 4000, 'unisex', 2));
-productos.push(new producto(11, 'Pantalon Oli', 4000, 'unisex', 2));
-productos.push(new producto(6, 'body Foderato', 3500, 'varon', 2));
-productos.push(new producto(3, 'body Zaira', 3500, 'nena', 2));
-productos.push(new producto(2, 'Set Isi', 3226, 'unisex', 2));
-productos.push(new producto(9, 'Remera Daysi', 1898, 'nena', 2));
-productos.push(new producto(4, 'Set Smooth', 1898, 'unisex', 2));
+productos.push(new producto(7, 'Campera Hoshi', 3098, 'unisex', 1));
+productos.push(new producto(1, 'Set Isaura', 4290, 'nena', 1));
+productos.push(new producto(5, 'Pantalon Hoshi', 4000, 'unisex', 1));
+productos.push(new producto(11, 'Pantalon Oli', 4000, 'unisex', 1));
+productos.push(new producto(6, 'body Foderato', 3500, 'varon', 1));
+productos.push(new producto(3, 'body Zaira', 3500, 'nena', 1));
+productos.push(new producto(2, 'Set Isi', 3226, 'unisex', 1));
+productos.push(new producto(9, 'Remera Daysi', 1898, 'nena', 1));
+productos.push(new producto(4, 'Set Smooth', 1898, 'unisex', 1));
 
 productos = JSON.parse(localStorage.getItem('productos')) || [];
 
@@ -74,8 +74,11 @@ formularioAgregar.addEventListener('submit', (e) => {
   function dibujarTabla() {
     const bodyTabla = document.getElementById('items');
     const total = document.querySelector('#total');
+    const contadorCarrito = document.querySelector('#contador-carrito');
+
     bodyTabla.innerHTML = ''; // Limpiar contenido previo de la tabla
 
+    let cantidadTotalCarrito = 0; // Inicializar la cantidad total del carrito
     let totalCarrito = 0; // Inicializar el total del carrito
 
     carrito.forEach((item, index) => {
@@ -122,12 +125,19 @@ formularioAgregar.addEventListener('submit', (e) => {
 
         bodyTabla.appendChild(fila);
 
+        // Sumar a la cantidad total del carrito
+        cantidadTotalCarrito += cantidad;
         // Sumar al total del carrito
         totalCarrito += subtotal;
     });
+
+    // Actualiza el contador del carrito con la cantidad total
+    contadorCarrito.textContent = cantidadTotalCarrito.toString();
+    // Actualiza el campo "total" con el total de valores del carrito
     total.textContent = `$${totalCarrito.toFixed(2)}`;
-    
-  }
+}
+
+
   function eliminarDelCarrito(index) {
     carrito.splice(index, 1); // Eliminar el elemento del carrito
     localStorage.setItem('productos', JSON.stringify(productos)); // Actualizar el localStorage
