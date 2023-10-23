@@ -287,7 +287,17 @@ function crearCardElement(card) {
   `;
   return cardElement;
 }
-
+const btnConfirmar = document.getElementById('confirmar');
+btnConfirmar.addEventListener('click', () => {
+  Swal.fire({
+    title: 'GRACIAS!',
+    text: 'Tu compra fue realizada con exito.',
+    imageUrl: './assets/img/logo.png',
+    imageWidth: 400,
+    imageHeight: 300,
+    imageAlt: 'Custom image',
+  });
+});
 
 
 

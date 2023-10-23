@@ -123,14 +123,32 @@ body {
   text-decoration: none; /* Elimina el subrayado de los enlaces en hover */
   color: #fff; /* Cambia el color del texto para que sea legible en el nuevo fondo */
 }
-.contador-carrito {
-  background-color: #ff7474;
+/* Estilos para el icono del carrito fijo */
+.carrito-fijo {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  
   color: #fff;
   border-radius: 50%;
-  padding: 3px 8px;
-  font-size: 15px;
+  width: 50px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+.contador-carrito {
+  font-size: 18px;
   position: absolute;
-  top: 220px;
-  right: 200px;
-  z-index: 1;
+  top: -10px;
+  right: -10px;
+  background-color: #fff;
+  color: #ff7474;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
