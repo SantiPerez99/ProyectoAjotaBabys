@@ -1,0 +1,68 @@
+[
+    {
+    "id": 1,
+    "name": "Set Isaura",
+    "age": 2,
+    "img": "./assets/img/set-isaura.jpg"
+  },
+  {
+      "id": 2, 
+      "name": "Set Isi",
+      "age": 2,
+      "img": "./assets/img/set-smooth.jpg"
+  },
+  {
+      "id": 3, 
+      "name": "Zaira",
+      "age": 2,
+      "img": "./assets/img/body-federato-zaira.jpg"
+  },
+  {
+      "id": 4, 
+      "name": "Set Smooth",
+      "age": 2,
+      "img": "./assets/img/body-douglas.jpg"
+  },
+  {
+    "id": 5, 
+    "name": "Pantalon Oshi",
+    "age": 2,
+    "img": "./assets/img/pantalon-hoshi-multi.jpg"
+  },
+  {
+    "id": 6, 
+    "name": "body Foderato",
+    "age": 2,
+    "img": "./assets/img/body-federato-zaira.jpg"
+  },
+  {
+    "id": 7, 
+    "name": "Campera Oshi",
+    "age": 2,
+    "img": "./assets/img/campera-hoshi.jpg"
+  },
+  {
+    "id": 8, 
+    "name": "Buzo Litoral",
+    "age": 2,
+    "img": "./assets/img/buzo-litoral.jpg"
+  },
+  {
+    "id": 9, 
+    "name": "Remera daysi",
+    "age": 2,
+    "img": "./assets/img/remera-daysi.jpg"
+  },
+  {
+    "id": 10, 
+    "name": "Remera Broklyn",
+    "age": 2,
+    "img": "./assets/img/remera-brooklyn-daysi.jpg"
+  },
+  {
+    "id": 11, 
+    "name": "Pantalon Oli",
+    "age": 2,
+    "img": "./assets/img/pantalon-oli.jpg"
+  }
+]

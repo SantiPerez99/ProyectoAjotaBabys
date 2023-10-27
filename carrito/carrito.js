@@ -153,7 +153,13 @@ btnVaciar.addEventListener('click', () => {
   dibujarTabla();
 });
 
-
+async function obtenerProductos(){
+  const response = await fetch ('../productos.json');
+  if (response.ok){
+    productos = await response.json()
+    return productos;
+  }
+}
 document.addEventListener('DOMContentLoaded', function() {
   const cards = [{
     id: 1,
@@ -298,7 +304,17 @@ btnConfirmar.addEventListener('click', () => {
     imageAlt: 'Custom image',
   });
 });
-
+function Promocion10(){
+  Swal.fire({
+    title: 'Compartí!',
+    text: 'Tu compra en Instagram, etiquetanos y recibí 10% de descuento en tu próxima compra!',
+    imageUrl: './assets/img/logo-ig.jpg',
+    imageWidth: 300,
+    imageHeight: 300,
+    imageAlt: 'Custom image',
+  });
+}
+setTimeout(Promocion10,5000);
 
 
 
