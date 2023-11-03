@@ -8,7 +8,7 @@ familia de fuentes: 'Vollkorn SC', serif;*/
   font-family: 'Bodoni Moda', serif;
   font-weight: 600;
   font-size: 100px;
-  color: #fa7373;
+  color: #000000b4;
 }
 .titulo-carrito{
   font-family: 'Bodoni Moda', serif;
@@ -70,8 +70,14 @@ familia de fuentes: 'Vollkorn SC', serif;*/
     text-transform: uppercase;
     letter-spacing: 1px;
   }
+.Padre-cards{
+  justify-content: center;
+  align-items: center;
+}  
 .card {
+  margin: 10px;
   margin-top: 10px;
+  
   
 }  
 body {
@@ -123,6 +129,25 @@ body {
   text-decoration: none; /* Elimina el subrayado de los enlaces en hover */
   color: #fff; /* Cambia el color del texto para que sea legible en el nuevo fondo */
 }
+.navegacion.active {
+  display: block;
+}
+/* Agregar estilos para el botón de hamburguesa */
+.menu-hamburguesa {
+  display: none;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+
+}
+
+.barra {
+  width: 30px;
+  height: 3px;
+  background-color: #000;
+  margin: 6px 0;
+}
 /* Estilos para el icono del carrito fijo */
 .carrito-fijo {
   position: fixed;
@@ -151,4 +176,23 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+@media screen and (max-width: 768px){
+  body {
+    background-image: url(../assets/img/fondo\ 1\ -\ paginas\ pequeñas.jpg); /* Imagen de fondo para pantallas pequeñas */
+    
+  }
+  .navegacion {
+    display: none;
+  }
+
+  .menu-hamburguesa {
+    display: block;
+  }
+  .titulo-carrito{
+    font-family: 'Bodoni Moda', serif;
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+  
 }

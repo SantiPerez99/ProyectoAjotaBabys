@@ -162,16 +162,17 @@ async function obtenerProductos(){
 }
 document.addEventListener('DOMContentLoaded', function() {
   const cards = [{
-    id: 1,
-    name: "Set Isaura",
-    age: 2,
-    img: "./assets/img/set-isaura.jpg"
-  },
-  {
-      id: 2, 
-      name: "Set Isi",
+    //sector 1 bodys
+      id: 1, 
+      name: "body Foderato",
       age: 2,
-      img: "./assets/img/set-smooth.jpg"
+      img: "./assets/img/body-federato-zaira.jpg"
+  },
+  {   
+    id: 2, 
+    name: "Zaira",
+    age: 2,
+    img: "./assets/img/body-federato-zaira.jpg"
   },
   {
       id: 3, 
@@ -179,63 +180,96 @@ document.addEventListener('DOMContentLoaded', function() {
       age: 2,
       img: "./assets/img/body-federato-zaira.jpg"
   },
+  // sector 2 remeras
   {
-      id: 4, 
-      name: "Set Smooth",
-      age: 2,
-      img: "./assets/img/body-douglas.jpg"
-  },
-  {
-    id: 5, 
-    name: "Pantalon Oshi",
-    age: 2,
-    img: "./assets/img/pantalon-hoshi-multi.jpg"
-  },
-  {
-    id: 6, 
-    name: "body Foderato",
-    age: 2,
-    img: "./assets/img/body-federato-zaira.jpg"
-  },
-  {
-    id: 7, 
-    name: "Campera Oshi",
-    age: 2,
-    img: "./assets/img/campera-hoshi.jpg"
-  },
-  {
-    id: 8, 
-    name: "Buzo Litoral",
-    age: 2,
-    img: "./assets/img/buzo-litoral.jpg"
-  },
-  {
-    id: 9, 
+    id: 4, 
     name: "Remera daysi",
     age: 2,
     img: "./assets/img/remera-daysi.jpg"
   },
   {
-    id: 10, 
+    id: 5, 
     name: "Remera Broklyn",
     age: 2,
     img: "./assets/img/remera-brooklyn-daysi.jpg"
   },
   {
-    id: 11, 
-    name: "Pantalon Oli",
+    id: 6, 
+    name: "Remera Broklyn",
     age: 2,
-    img: "./assets/img/pantalon-oli.jpg"
+    img: "./assets/img/remera-brooklyn-daysi.jpg"
+  },
+  //sector 3 conjuntos 
+  {
+    id: 7, 
+    name: "Set Isi",
+    age: 2,
+    img: "./assets/img/set-smooth.jpg"
+  },
+  {   
+    id: 8, 
+    name: "Set Smooth",
+    age: 2,
+    img: "./assets/img/body-douglas.jpg"
+  
+  },
+  {
+    id: 9,
+    name: "Set Isaura",
+    age: 2,
+    img: "./assets/img/set-isaura.jpg"
+  
+  },
+  //sector 4 pantalones
+  {
+      id: 10, 
+      name: "Pantalon Hoshi",
+      age: 2,
+      img: "./assets/img/pantalon-hoshi-multi.jpg"
+  },
+  {
+      id: 11, 
+      name: "Pantalon Oli",
+      age: 2,
+      img: "./assets/img/pantalon-oli.jpg"
+  },
+  {
+      id: 12, 
+      name: "Pantalon Oli",
+      age: 2,
+      img: "./assets/img/pantalon-oli.jpg"
+  },
+  //sector 5 buzos y camoperas 
+  {
+      id: 13, 
+      name: "Campera Hoshi",
+      age: 2,
+      img: "./assets/img/campera-hoshi.jpg"
+  },
+  {
+      id: 14, 
+      name: "Campera Hoshi",
+      age: 2,
+      img: "./assets/img/campera-hoshi.jpg"
+  },
+  {
+    id: 15, 
+    name: "Buzo Litoral",
+    age: 2,
+    img: "./assets/img/buzo-litoral.jpg"
   }
   ];
   const cardContainer1 = document.getElementById("card-container-1");
   const cardContainer2 = document.getElementById("card-container-2");
   const cardContainer3 = document.getElementById("card-container-3");
+  const cardContainer4 = document.getElementById("card-container-4");
+  const cardContainer5 = document.getElementById("card-container-5");
   // Separa las tarjetas en tres segmentos
-  const segment1Cards = cards.slice(0, 4); // Ejemplo: primeras 4 tarjetas
-  const segment2Cards = cards.slice(4, 8); // Ejemplo: siguientes 4 tarjetas
-  const segment3Cards = cards.slice(8);   // Ejemplo: las últimas 3 tarjetas
-
+  const segment1Cards = cards.slice(0, 3); // Ejemplo: primeras 4 tarjetas
+  const segment2Cards = cards.slice(3, 6); // Ejemplo: siguientes 4 tarjetas
+  const segment3Cards = cards.slice(6, 9);   // Ejemplo: las últimas 3 tarjetas
+  const segment4Cards = cards.slice(9, 12);
+  const segment5Cards = cards.slice(12);
   // Agrega tarjetas al primer segmento
   segment1Cards.forEach((card) => {
       const cardElement = crearCardElement(card);
@@ -252,6 +286,14 @@ document.addEventListener('DOMContentLoaded', function() {
   segment3Cards.forEach((card) => {
       const cardElement = crearCardElement(card);
       cardContainer3.appendChild(cardElement);
+  });
+  segment4Cards.forEach((card) => {
+    const cardElement = crearCardElement (card);
+    cardContainer4.appendChild(cardElement);
+  });
+  segment5Cards.forEach((card) => {
+    const cardElement = crearCardElement (card);
+    cardContainer5.appendChild(cardElement);
   });
   const botonesAgregarAlCarrito = document.querySelectorAll(".btn.btn-outline-info");
 
@@ -315,7 +357,20 @@ function Promocion10(){
   });
 }
 setTimeout(Promocion10,5000);
+// menu hamburguesa
+const menuToggle = document.querySelector(".menu-hamburguesa");
+const navegacion = document.querySelector(".navegacion");
 
+menuToggle.addEventListener("click", function () {
+  navegacion.classList.toggle("active");
+});
+
+// Detectar el ancho de la ventana y aplicar los estilos correspondientes
+window.addEventListener("resize", function () {
+  if (window.innerWidth > 768) {
+    navegacion.classList.remove("active");
+  }
+});
 
 
 
